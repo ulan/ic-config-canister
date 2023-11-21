@@ -1,0 +1,4 @@
+service: () -> {
+    add: (text, text) -> (text);
+    http_request: (record {url:text; method:text; body:vec nat8; headers:vec record {text; text}; certificate_version:opt nat16}) -> (record {body:vec nat8; headers:vec record {text; text}; status_code:nat16}) query;
+}
