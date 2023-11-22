@@ -50,7 +50,7 @@ export default Canister({
         }
 
         if (req.url.startsWith('/config')) {
-            const match = /version=([^&]+)/g.exec(req.url);
+            const match = /version=[" ]?([^&" ]+)/g.exec(req.url);
             if (!match || !match[1]) {
                 return error('Expected a version argument: ?version=<replica_version>');
             }
@@ -76,9 +76,10 @@ export default Canister({
     }),
 
     add: update([text, text], text, (version, config) => {
-        console.log("received " + config);
+        version = version.trim();
         try {
-            JSON.parse(config);
+            const json = JSON.parse(config);
+            config = JSON.stringify(json);
         } catch (err) {
             return `The given config is not a valid JSON: ${err}`;
         }
