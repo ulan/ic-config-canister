@@ -2,11 +2,6 @@
 
 This canister stores `(replica-version, json-config)` pairs and allows to query them via HTTP.
 
-This canister was build with Azle. In order to install Azle, run the following command from the root of the repository:
-```
-npm install
-```
-
 Assuming that `dfx` has been started with `dfx start` and is running, you deploy the canister locally with:
 ```
 dfx deploy
